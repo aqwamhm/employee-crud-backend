@@ -31,9 +31,10 @@
     DB_PASSWORD=<PASSWORD_DATABASE>
     ```
 
-    Jalankan perintah berikut untuk mengenerate JWT secret key:
+    Jalankan perintah berikut untuk mengenerate App Key & JWT secret key:
 
     ```bash
+    php artisan key:generate
     php artisan jwt:secret
     ```
 
