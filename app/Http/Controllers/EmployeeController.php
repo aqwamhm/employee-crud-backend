@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeCreateRequest;
-use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
@@ -40,7 +39,14 @@ class EmployeeController extends Controller
 
     public function update(EmployeeUpdateRequest $request, $id)
     {
-        $employee = Employee::findOrFail($id);
+        $employee = Employee::find($id);
+        if (!$employee) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => 'Employee not found'
+            ], 404);
+        }
+
         $employee->update($request->validated());
         return response()->json([
             'status' => 'success',
@@ -55,7 +61,14 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
-        $employee = Employee::findOrFail($id);
+        $employee = Employee::find($id);
+        if (!$employee) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => 'Employee not found'
+            ], 404);
+        }
+
         $employee->delete();
         return response()->json([
             'status' => 'success',
