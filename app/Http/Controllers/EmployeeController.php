@@ -19,6 +19,15 @@ class EmployeeController extends Controller
         ], 200);
     }
 
+    public function sortedBySalary()
+    {
+        $employees = Employee::with('position')->orderBy('salary', 'desc')->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $employees
+        ], 200);
+    }
+
     public function create(EmployeeCreateRequest $request)
     {
         $employee = Employee::create($request->validated());
