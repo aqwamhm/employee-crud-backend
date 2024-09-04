@@ -7,13 +7,12 @@ use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
-use GuzzleHttp\Psr7\Request;
 
 class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::with('position')->get();
+        $employees = Employee::with('position')->orderBy('id', 'desc')->get();
         return response()->json([
             'status' => 'success',
             'data' => EmployeeResource::collection($employees),
