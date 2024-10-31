@@ -1,6 +1,6 @@
-### Panduan Instalasi Backend
+### Backend Installation Guide
 
-1. **Clone Repository**
+1. **Clone the Repository**
 
     ```bash
     git clone https://github.com/aqwamhm/employee-crud-backend
@@ -13,60 +13,64 @@
     composer install
     ```
 
-3. **Konfigurasi Environment**
-   Salin file `.env.example` menjadi `.env`:
+3. **Environment Configuration**
+   Copy the `.env.example` file to `.env`:
 
     ```bash
     cp .env.example .env
     ```
 
-    Kemudian, buka file `.env` dan sesuaikan konfigurasi database:
+    Then, open the `.env` file and adjust the database configuration:
 
     ```plaintext
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=<NAMA_DATABASE>
-    DB_USERNAME=<USERNAME_DATABASE>
-    DB_PASSWORD=<PASSWORD_DATABASE>
+    DB_DATABASE=<DATABASE_NAME>
+    DB_USERNAME=<DATABASE_USERNAME>
+    DB_PASSWORD=<DATABASE_PASSWORD>
     ```
 
-    Jalankan perintah berikut untuk mengenerate App Key & JWT secret key:
+    Run the following commands to generate the App Key and JWT secret key:
 
     ```bash
     php artisan key:generate
     php artisan jwt:secret
     ```
 
-4. **Jalankan Migrasi Database**
+4. **Run Database Migrations**
 
     ```bash
     php artisan migrate
     ```
 
-5. **Menjalankan Pengujian**
+5. **Run Tests**
 
     ```bash
     php artisan test
     ```
 
-6. **Jalankan Aplikasi**
+6. **Run the Application**
 
     ```bash
     php artisan serve
     ```
 
-    Aplikasi akan berjalan di `http://localhost:8000` secara default.
+    The application will run on `http://localhost:8000` by default.
 
 7. **Generate Dummy Data**
 
-    Untuk mengenerate data dummy, jalankan perintah berikut:
+    To generate dummy data, run the following command:
 
     ```bash
     php artisan migrate:fresh --seed
     ```
 
-    Ini akan membuat dua akun pengguna:
+    This will create two user accounts:
 
-    - **admin@example.com** dengan password `admin123`
-    - **superadmin@example.com** dengan password `superadmin123`
+    - **admin@example.com** with password `admin123`
+    - **superadmin@example.com** with password `superadmin123`
+
+### Frontend Setup
+
+After setting up the backend, ensure that the frontend is also properly configured. Follow the instructions in the [frontend repository](https://github.com/aqwamhm/employee-crud-react) to clone, configure, and run the frontend application.
